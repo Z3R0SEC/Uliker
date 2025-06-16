@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+              <div class="warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        {% if msg %}
+        {{ msg }}
+        {% else %}
+      Please Use this tool at your own risk. Clicking<b> Delete </b> Below You Accept That We are Not responsible for any damages that may be <b>Done By This Tool</b> Or any further Restrictions on your account!. Use it Once a Day to decrease Chances of being Banned By Facebook
+        {% endif %}
+      </div>
+      
+      <form action="" method="POST">
+      <div class="actions">
+<button class="btn deactivate"><i class="fa-solid fa-trash-alt"></i> DELETE POST</button>
+</form>
+{% endblock %}

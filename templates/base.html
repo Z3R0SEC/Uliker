@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ULIKER | {{ title }}</title>
+
+  <meta name="referrer" content="default" id="meta_referrer" />
+   <meta name="robots" content="index, noarchive">
+    <meta name="description" content="ULIKER is a social exchange platform that boosts likes, followers, and comments on your posts, helping you gain followers and engagement for free.">
+    <meta name="keywords" content="autoliker, autolikes, uliker, ulike, facebook autoliker, best facebook autoliker,free facebook likes,facebook autoliker no spam, autoliker no spam, best facebook autoliker no spam, facebook autolikes for free">
+    <meta name="author" content="Z3R0SEC">
+    <meta property="og:image" content="{{ url_for('static', filename='logo.png') }}"/>
+    <meta property="og:title" content="Uliker - One of the best Facebook Autoliker"/>
+    <meta property="og:description" content="Uliker is a social exchange platform that boosts likes and comments on your posts, helping you gain followers and engagement for free."/>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fa-solid fa-thumbs-up"></i> Uliker.x10.bz</h1>
+    </header>
+    
+    <div style="height:5px;width:100%;background:linear-gradient(135deg,rgba(255,255,255,0.2),rgba(0,0,0,0.4));border-radius:10px;backdrop-filter:blur(8px);box-shadow:0 0 15px rgba(0,200,255,0.7), inset 0 0 8px rgba(0,200,255,0.5);animation:shine 3s infinite alternate;"></div>
+    <br>
+    
+    {% block content %}{% endblock %}
+    
+ </body>
+</html>

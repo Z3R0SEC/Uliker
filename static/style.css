@@ -1,0 +1,153 @@
+/* Reset & Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+
+@keyframes shine {
+  0% {
+    transform: scaleX(1) translateY(0px) skewX(0deg);
+    filter: brightness(1.1);
+  }
+  50% {
+    transform: scaleX(1.02) translateY(-1px) skewX(2deg);
+    filter: brightness(1.4) saturate(1.2);
+  }
+  100% {
+    transform: scaleX(1) translateY(0px) skewX(0deg);
+    filter: brightness(1.1);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: #90caf9;
+  text-shadow: 0 0 10px rgba(144, 202, 249, 0.4);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #bbdefb;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid #64b5f6;
+}
+
+.info p {
+  margin: 5px 0;
+}
+
+.status {
+  background: #66bb6a;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #fff;
+  display: inline-block;
+}
+
+.warning {
+  background: rgba(255, 193, 7, 0.1);
+  padding: 10px;
+  border-left: 4px solid #ffc107;
+  margin: 20px 0;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+.warning i {
+  margin-right: 6px;
+  color: #ffc107;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.activate {
+  background-color: #1e88e5;
+  color: white;
+}
+
+.activate:hover {
+  background-color: #1565c0;
+}
+
+.deactivate {
+  background-color: #e53935;
+  color: white;
+}
+
+.deactivate:hover {
+  background-color: #b71c1c;
+}
+
+.back {
+  background-color: #555;
+  color: white;
+}
+
+.back:hover {
+  background-color: #333;
+}

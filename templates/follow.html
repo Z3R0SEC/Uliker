@@ -1,0 +1,84 @@
+    {% extends 'base.html' %}
+{% block content %}
+        <form class="card" id='followForm'>
+      <div class="form-group">
+        <label for="url"><i class="fa-solid fa-link"></i> Profile Url</label>
+        <input type="text" id="url" name="url" placeholder="https://facebook.com/profile..." required>
+      </div>
+
+      <div class="form-group">
+        <label for="cookie"><i class="fa-solid fa-cookie-bite"></i> Facebook Cookie</label>
+        <textarea id="cookie" name="cookie" placeholder="Your Facebook Token" rows="3" disabled>{{ user.token }}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="followers"><i class="fa-solid fa-stopwatch"></i> Limit Followers</label>
+        <select id="followers" name="limit" required>
+          <option value="10">10 Followers</option>
+          
+          <option value="20">20 Followers</option>
+          <option value="30">30 Followers</option>
+        </select>
+      </div>
+      <center>
+       <b id="responseArea" style="display:none;padding:10px 20px;margin-top:15px;border-radius:12px;background:rgba(255,255,255,0.05);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.2);color:#0f0;font-weight:500;box-shadow:0 0 10px rgba(0,255,0,0.2);"></b>
+      </center>
+      <button type="submit" id='followBtn' class="btn-submit">
+        <i class="fa-solid fa-user-friends"></i> Get Followers
+      </button>
+    <center><b><a href='/'>Back Home.</a></b></center>
+    </form>
+  </div>
+<!-- Include SweetAlert2 (if not already included) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  document.getElementById('followForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const button = document.getElementById('followBtn');
+
+    button.disabled = true;
+    button.innerText = "Getting Followers ...";
+
+    fetch('/follow', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: data,
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      });
+    })
+    .catch(err => {
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: 'Error: ' + err,
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true
+      });
+    })
+    .finally(() => {
+      button.disabled = false;
+      button.innerHTML = '<i class="fa-solid fa-user-friends"></i> Get Followers';
+    });
+  });
+</script>
+    {% endblock %}
+    

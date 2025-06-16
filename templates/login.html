@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form class="card" action="" method="POST">
+      <div class="form-group">
+          <center>
+              <h2><i style="color: red;" class="fa-solid fa-user-check"></i> SIGNING IN</h2><hr><br>
+          </center>
+        <label for="email"><i style="color: greenyellow;" class="fa-solid fa-user-astronaut"></i> UID/EMAIL/PHONE</label>
+        <input type="text" name="email" id="email" placeholder="email or phone" required><br><br>
+        
+         <label for="password"><i style="color: greenyellow;" class="fa-solid fa-key"></i> PASSWORD</label>
+        <input type="password" name="password" id="password" placeholder="Enter Password" required>
+      </div>
+      <p id="message"></p>    
+      <button type="submit" class="btn-submit">Sign In 
+        <i class="fa-solid fa-sign-in-alt"></i>
+      </button>
+      </form>
+     </div>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   {% if msg %}
+    <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      title: "FB | {{ msg }}",
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true,
+      background: 'rgba(255, 255, 255, 0.05)',   // translucent glassy feel
+      color: '#ffffff',
+      padding: '1.2rem 1.6rem',
+      didOpen: (toast) => {
+        toast.style.backdropFilter = 'blur(10px)';
+        toast.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+        toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.35)';
+        toast.style.borderRadius = '12px';
+        toast.style.fontSize = '0.95rem';
+        toast.style.letterSpacing = '0.5px';
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      }
+    });
+  });
+</script>
+{% endif %}
+  {% endblock %}

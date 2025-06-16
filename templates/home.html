@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="card">
+      <div class="profile">
+        <img src="{{ user.photo}}" alt="{{ user.name }} Profile" class="avatar">
+        <div class="info">
+          <p><strong>UID:</strong> <span id="profileId">{{ user.uid }}</span></p>
+          <p><strong>NAME:</strong> <span id="displayName">{{ user.name }}</span></p>
+          <p><strong>Status:</strong> <span class="status">ACTIVE USER</span></p>
+        </div>
+      </div>
+
+      <div class="warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        If you're using your <strong>main account</strong>, we highly recommend removing the logged location or changing your password immediately.
+      </div>
+
+      <div class="actions">
+        <button class="btn activate" onclick="location.href='/follow'"><i class="fa-solid fa-user-friends"></i> AUTO FOLLOWERS</button>
+        <button class="btn activate" onclick="location.href='/posts/delete'"><i class="fa-solid fa-trash-alt"></i> DELETE POSTS</button>
+        <button class="btn activate" onclick="location.href='/guad'"><i class="fa-solid fa-shield-alt"></i> ACTIVATE SHIELD</button>
+        <button class="btn back" onclick="location.href='/logout'"><i class="fa-solid fa-arrow-right"></i> LOG OUT</button>
+      </div>
+    </div>
+  </div>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      title: '{{ msg }}',
+      showConfirmButton: false,
+      timer: 5000,
+      timerProgressBar: true,
+      background: 'rgba(255, 255, 255, 0.05)',   // translucent glassy feel
+      color: '#ffffff',
+      padding: '1.2rem 1.6rem',
+      didOpen: (toast) => {
+        toast.style.backdropFilter = 'blur(10px)';
+        toast.style.border = '1px solid rgba(255, 255, 255, 0.1)';
+        toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.35)';
+        toast.style.borderRadius = '12px';
+        toast.style.fontSize = '0.95rem';
+        toast.style.letterSpacing = '0.5px';
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      }
+    });
+  });
+</script>
+
+  {% endblock %}

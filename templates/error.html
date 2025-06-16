@@ -1,0 +1,12 @@
+
+    {% extends 'base.html' %}
+{% block content %}
+              <div class="warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Your session has expired. Please use the button below to log in again.<br><br>
+If this is your main account, we strongly advise updating your password or reviewing your login activity for security.<br>
+For testing purposes, consider using dummy accounts to avoid risks.
+      </div>
+<a href="/logout" class="btn back"><b><i class="fa fa-sign-out-alt"></i></b></a>
+    {% endblock %}
+    
