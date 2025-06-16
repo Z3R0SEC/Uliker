@@ -1,0 +1,6 @@
+flask-cors
+requests
+flask
+flask-sitemap
+user-agents
+bs4
