@@ -17,6 +17,31 @@ app.permanent_session_lifetime = 60 * 60 * 24 * 365
 
 init()
 
+import re
+
+def is_crawler():
+    user_agent = request.headers.get('User-Agent', '')
+    return re.search(r'Googlebot|Bingbot|Slurp|DuckDuckBot|Yandex|facebookexternalhit|Twitterbot', user_agent, re.IGNORECASE)
+
+@app.before_request
+def allow_crawler_access():
+    public_paths = ['/', '/auth/login', '/robots.txt', '/static', '/follow', '/posts/delete', '/guad', '/sitemap.xml']
+    is_public = any(request.path.startswith(p) for p in public_paths)
+
+    # Let crawlers access public pages
+    if is_crawler() and is_public:
+        return
+
+    # Allow public pages for real users
+    if is_public:
+        return
+
+    # Enforce login for everything else
+    if 'uid' not in session:
+        return redirect(url_for('login'))
+
+
+
 @app.route("/", methods=["GET","POST"])
 def home():
     if 'uid' not in session:
